@@ -1,0 +1,461 @@
+<!-- Consultation Booking Form
+     Filename: consultation-booking-form.html
+     Purpose: Free Consultancy Booking Form for Student Admission
+     Behavior: POSTs lead to /submit-lead.php (non-blocking) and redirects to WhatsApp with a filled message.
+     WhatsApp: +447446969466
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Book Free Consultancy — Student Admission</title>
+  <meta name="description" content="Book a free consultation with Student Admission for UK study guidance. Complete the form to reserve your slot."/>
+  <link rel="icon" href="https://studentadmission.uk/img/logo.webp" />
+
+  <!-- Fonts & basic variables (matches main site styles) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+  <style>
+    :root{
+      --primary:#0b3d91;
+      --accent:#d7263d;
+      --muted:#6b7280;
+      --bg:#f7f9fc;
+      --card:#ffffff;
+      --radius:12px;
+      --maxWidth:1100px;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#111;line-height:1.45;font-size:15px}
+    .container{max-width:var(--maxWidth);margin:28px auto;padding:20px}
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:0 8px 30px rgba(13,30,63,0.06)}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+    .logo img{height:44px}
+    h1{margin:0 0 6px 0;font-size:22px;color:var(--primary)}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    form .section{margin-bottom:18px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea{
+      width:100%;padding:10px 12px;border-radius:8px;border:1px solid #e6e9ee;background:#fff;font-size:15px;
+    }
+    textarea{min-height:100px;resize:vertical}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .full{grid-column:1/-1}
+    .row{display:flex;gap:10px}
+    .btn{background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;border:0;font-weight:600;cursor:pointer}
+    .btn.secondary{background:transparent;border:1px solid #e6e9ee;color:#111}
+    .muted{color:var(--muted);font-size:14px}
+    .note{font-size:13px;color:var(--muted);margin-top:8px}
+    .inline{display:flex;gap:8px;align-items:center}
+    .hidden{display:none}
+    .success{color:green}
+    .error{color:crimson}
+    .small{font-size:13px;color:var(--muted)}
+    @media (max-width:840px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <header>
+        <div class="logo">
+          <img src="https://studentadmission.uk/img/logo.webp" alt="Student Admission">
+        </div>
+        <div>
+          <div style="font-weight:700">Student Admission</div>
+          <div class="small">Book your free consultancy session — UK study experts</div>
+        </div>
+      </header>
+
+      <main>
+        <h1>Book Your Free Consultancy Session</h1>
+        <p class="lead">Reserve a free 20–30 minute consultation with a certified Student Admission counsellor. Fill in the form and we will contact you to confirm the slot.</p>
+
+        <form id="consultForm" class="card" autocomplete="on" novalidate>
+          <!-- SECTION 1: Personal Information -->
+          <div class="section">
+            <h3 style="margin:0 0 8px 0">Personal Information</h3>
+            <div class="grid">
+              <div>
+                <label for="fullName">Full Name *</label>
+                <input id="fullName" name="fullName" type="text" placeholder="e.g. Mohammad Hasan" required>
+              </div>
+              <div>
+                <label for="email">Email Address *</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+              <div>
+                <label for="phone">Phone / WhatsApp Number *</label>
+                <input id="phone" name="phone" type="tel" placeholder="+8801XXXXXXXXX" required>
+              </div>
+              <div>
+                <label for="dob">Date of Birth (optional)</label>
+                <input id="dob" name="dob" type="date">
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: Academic Background -->
+          <div class="section">
+            <h3 style="margin:0 0 8px 0">Academic Background</h3>
+            <div class="grid">
+              <div>
+                <label for="educationLevel">Current / Last Education Level *</label>
+                <select id="educationLevel" name="educationLevel" required>
+                  <option value="">-- Select --</option>
+                  <option>SSC / O-Level</option>
+                  <option>HSC / A-Level</option>
+                  <option>Diploma</option>
+                  <option>Bachelor's Running</option>
+                  <option>Bachelor's Completed</option>
+                  <option>Master's Running</option>
+                  <option>Master's Completed</option>
+                </select>
+              </div>
+              <div>
+                <label for="major">Field of Study / Major *</label>
+                <input id="major" name="major" type="text" placeholder="e.g. Business, Engineering" required>
+              </div>
+              <div class="full">
+                <label for="result">Result / GPA / CGPA (optional)</label>
+                <input id="result" name="result" type="text" placeholder="e.g. GPA 3.5 / CGPA 3.2">
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 3: Study Abroad Preference -->
+          <div class="section">
+            <h3 style="margin:0 0 8px 0">Study Abroad Preference</h3>
+            <div class="grid">
+              <div>
+                <label for="preferredCountry">Preferred Country for Study *</label>
+                <select id="preferredCountry" name="preferredCountry" required>
+                  <option value="">-- Select Country --</option>
+                  <option>United Kingdom</option>
+                  <option>Canada</option>
+                  <option>USA</option>
+                  <option>Australia</option>
+                  <option>Germany</option>
+                  <option>Malaysia</option>
+                  <option>Finland</option>
+                  <option>Sweden</option>
+                  <option>Others</option>
+                </select>
+              </div>
+              <div>
+                <label for="programLevel">Intended Program Level *</label>
+                <select id="programLevel" name="programLevel" required>
+                  <option value="">-- Select --</option>
+                  <option>Foundation</option>
+                  <option>Diploma</option>
+                  <option>Bachelor's</option>
+                  <option>Pre-Master's</option>
+                  <option>Master's</option>
+                  <option>PhD</option>
+                </select>
+              </div>
+              <div class="full">
+                <label for="subjectArea">Desired Subject Area *</label>
+                <input id="subjectArea" name="subjectArea" type="text" placeholder="e.g. IT, Business, Health" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 4: Budget & Support -->
+          <div class="section">
+            <h3 style="margin:0 0 8px 0">Budget & Sponsor</h3>
+            <div class="grid">
+              <div>
+                <label for="budget">Annual Study Budget (approx) *</label>
+                <select id="budget" name="budget" required>
+                  <option value="">-- Select Range --</option>
+                  <option>Under 5 Lac BDT</option>
+                  <option>5–10 Lac BDT</option>
+                  <option>10–15 Lac BDT</option>
+                  <option>15–20 Lac BDT</option>
+                  <option>20–30 Lac BDT</option>
+                  <option>30+ Lac BDT</option>
+                </select>
+              </div>
+              <div>
+                <label for="sponsor">Who Will Sponsor Your Study? *</label>
+                <select id="sponsor" name="sponsor" required>
+                  <option value="">-- Select --</option>
+                  <option>Father</option>
+                  <option>Mother</option>
+                  <option>Guardian</option>
+                  <option>Self-funded</option>
+                  <option>Education Loan</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 5: Consultation Scheduling -->
+          <div class="section">
+            <h3 style="margin:0 0 8px 0">Consultation Scheduling</h3>
+            <div class="grid">
+              <div>
+                <label for="prefDate">Preferred Date for Consultation *</label>
+                <input id="prefDate" name="prefDate" type="date" required>
+              </div>
+              <div>
+                <label for="timeSlot">Preferred Time Slot *</label>
+                <select id="timeSlot" name="timeSlot" required>
+                  <option value="">-- Select Slot --</option>
+                  <option>10 AM – 12 PM</option>
+                  <option>12 PM – 2 PM</option>
+                  <option>2 PM – 4 PM</option>
+                  <option>4 PM – 6 PM</option>
+                </select>
+              </div>
+              <div>
+                <label for="mode">Consultation Mode *</label>
+                <select id="mode" name="mode" required>
+                  <option value="">-- Select Mode --</option>
+                  <option>WhatsApp Call</option>
+                  <option>Google Meet</option>
+                  <option>In Person (Office Visit)</option>
+                </select>
+              </div>
+              <div>
+                <label for="englishProf">English Proficiency</label>
+                <select id="englishProf" name="englishProf">
+                  <option value="">-- Select --</option>
+                  <option>MOI</option>
+                  <option>IELTS</option>
+                  <option>TOEFL</option>
+                  <option>Duolingo</option>
+                  <option>None</option>
+                  <option>Planning to take</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 6: Additional Information -->
+          <div class="section">
+            <h3 style="margin:0 0 8px 0">Additional Information</h3>
+            <div class="grid">
+              <div>
+                <label>Do you have a passport? *</label>
+                <div class="inline">
+                  <label style="font-size:14px"><input type="radio" name="hasPassport" value="Yes" required> Yes</label>
+                  <label style="font-size:14px"><input type="radio" name="hasPassport" value="No" required> No</label>
+                </div>
+              </div>
+              <div>
+                <label>Any previous visa rejection? *</label>
+                <div class="inline">
+                  <label style="font-size:14px"><input type="radio" name="visaRejected" value="No" checked required> No</label>
+                  <label style="font-size:14px"><input type="radio" name="visaRejected" value="Yes" required> Yes</label>
+                </div>
+              </div>
+              <div id="rejectionReasonWrap" class="full hidden">
+                <label for="rejectionReason">If Yes, explain reason (short)</label>
+                <input id="rejectionReason" name="rejectionReason" type="text" placeholder="Brief explanation">
+              </div>
+
+              <div class="full">
+                <label for="notes">Additional Notes / Questions (optional)</label>
+                <textarea id="notes" name="notes" placeholder="Any special requests or details you want the counsellor to know..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 7: Consent -->
+          <div class="section">
+            <label style="font-weight:600">
+              <input id="consent" name="consent" type="checkbox" required>
+              &nbsp;I confirm the information above is accurate and I agree to be contacted by Student Admission.
+            </label>
+          </div>
+
+          <div class="section inline" style="justify-content:flex-end;gap:12px">
+            <button id="bookBtn" class="btn" type="submit">Book Free Consultancy</button>
+            <button id="clearBtn" type="button" class="btn secondary">Clear</button>
+          </div>
+
+          <p id="formMessage" class="note" aria-live="polite"></p>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const WHATSAPP_NUMBER = '447446969466'; // without plus for wa.me
+      const form = document.getElementById('consultForm');
+      const messageEl = document.getElementById('formMessage');
+      const bookBtn = document.getElementById('bookBtn');
+      const clearBtn = document.getElementById('clearBtn');
+      const rejectionRadios = document.getElementsByName('visaRejected');
+      const rejectionWrap = document.getElementById('rejectionReasonWrap');
+
+      // Show/hide rejection reason
+      function handleRejectionToggle(){
+        const value = Array.from(rejectionRadios).find(r=>r.checked).value;
+        if(value === 'Yes'){
+          rejectionWrap.classList.remove('hidden');
+          document.getElementById('rejectionReason').required = true;
+        } else {
+          rejectionWrap.classList.add('hidden');
+          document.getElementById('rejectionReason').required = false;
+          document.getElementById('rejectionReason').value = '';
+        }
+      }
+      Array.from(rejectionRadios).forEach(r=> r.addEventListener('change', handleRejectionToggle));
+      handleRejectionToggle();
+
+      // Clear button
+      clearBtn.addEventListener('click', function(){
+        form.reset();
+        handleRejectionToggle();
+        messageEl.textContent = '';
+      });
+
+      // Helper: validate phone basic pattern (very simple)
+      function isValidPhone(value){
+        // Accept + and digits, length between 8 and 18 characters (rough check)
+        if(!value) return false;
+        const cleaned = value.replace(/\s+/g,'');
+        return /^[+\d][\d\s\-()]{7,17}$/.test(cleaned);
+      }
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+        messageEl.className = 'note';
+        messageEl.textContent = '';
+
+        // Basic required fields check
+        const fullName = document.getElementById('fullName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const educationLevel = document.getElementById('educationLevel').value;
+        const major = document.getElementById('major').value.trim();
+        const preferredCountry = document.getElementById('preferredCountry').value;
+        const programLevel = document.getElementById('programLevel').value;
+        const subjectArea = document.getElementById('subjectArea').value.trim();
+        const budget = document.getElementById('budget').value;
+        const sponsor = document.getElementById('sponsor').value;
+        const prefDate = document.getElementById('prefDate').value;
+        const timeSlot = document.getElementById('timeSlot').value;
+        const mode = document.getElementById('mode').value;
+        const consent = document.getElementById('consent').checked;
+
+        if(!fullName || !email || !phone){
+          messageEl.className = 'error';
+          messageEl.textContent = 'Please provide Full Name, Email and WhatsApp number.';
+          return;
+        }
+        if(!isValidPhone(phone)){
+          messageEl.className = 'error';
+          messageEl.textContent = 'Please enter a valid phone/WhatsApp number including country code.';
+          return;
+        }
+        // simple email check
+        if(!/^\S+@\S+\.\S+$/.test(email)){
+          messageEl.className = 'error';
+          messageEl.textContent = 'Please enter a valid email address.';
+          return;
+        }
+        // required selects
+        if(!educationLevel || !major || !preferredCountry || !programLevel || !subjectArea || !budget || !sponsor || !prefDate || !timeSlot || !mode){
+          messageEl.className = 'error';
+          messageEl.textContent = 'Please complete all required fields.';
+          return;
+        }
+        if(!consent){
+          messageEl.className = 'error';
+          messageEl.textContent = 'Please confirm the consent checkbox to proceed.';
+          return;
+        }
+
+        // Disable button while processing
+        bookBtn.disabled = true;
+        const originalBtnText = bookBtn.textContent;
+        bookBtn.textContent = 'Processing...';
+
+        // Prepare all form values (including optional)
+        const formData = {
+          fullName,
+          email,
+          phone,
+          dob: document.getElementById('dob').value || '',
+          educationLevel,
+          major,
+          result: document.getElementById('result').value || '',
+          preferredCountry,
+          programLevel,
+          subjectArea,
+          budget,
+          sponsor,
+          prefDate,
+          timeSlot,
+          mode,
+          englishProf: document.getElementById('englishProf').value || '',
+          hasPassport: document.querySelector('input[name="hasPassport"]:checked') ? document.querySelector('input[name="hasPassport"]:checked').value : '',
+          visaRejected: document.querySelector('input[name="visaRejected"]:checked') ? document.querySelector('input[name="visaRejected"]:checked').value : 'No',
+          rejectionReason: document.getElementById('rejectionReason') ? document.getElementById('rejectionReason').value.trim() : '',
+          notes: document.getElementById('notes').value.trim() || '',
+          consent: consent ? 'Yes' : 'No'
+        };
+
+        try{
+          // Non-blocking backend post (optional). If endpoint absent, fetch will fail silently.
+          await fetch('/submit-lead.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formData)
+          }).catch(()=>{/* ignore backend failure */});
+
+          // Build WhatsApp message (template)
+          const WA_MESSAGE =
+`Consultation Booking - Student Admission
+Full Name: ${formData.fullName}
+WhatsApp: ${formData.phone}
+Email: ${formData.email}
+Education Level: ${formData.educationLevel}
+Field / Major: ${formData.major}
+Result: ${formData.result || 'N/A'}
+Preferred Country: ${formData.preferredCountry}
+Program Level: ${formData.programLevel}
+Subject Area: ${formData.subjectArea}
+Budget: ${formData.budget}
+Sponsor: ${formData.sponsor}
+Preferred Date: ${formData.prefDate}
+Preferred Time: ${formData.timeSlot}
+Mode: ${formData.mode}
+English: ${formData.englishProf || 'N/A'}
+Has Passport: ${formData.hasPassport}
+Previous Visa Rejection: ${formData.visaRejected}
+Rejection Reason: ${formData.rejectionReason || 'N/A'}
+Notes: ${formData.notes || 'N/A'}
+`;
+
+          messageEl.className = 'success';
+          messageEl.textContent = 'Thank you! Redirecting to WhatsApp to confirm your booking...';
+
+          // small delay for UX
+          setTimeout(function(){
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`;
+            window.location.href = url;
+          }, 700);
+
+        } catch(err) {
+          console.error(err);
+          messageEl.className = 'error';
+          messageEl.textContent = 'Sorry, something went wrong. Please try again later.';
+        } finally {
+          bookBtn.disabled = false;
+          bookBtn.textContent = originalBtnText;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

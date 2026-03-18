@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Student Dashboard | STUDENT ADMISSION LONDON</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+
+  <div class="text-center mb-4">
+    <h3>Student Dashboard</h3>
+    <small class="text-muted">STUDENT ADMISSION LONDON</small>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div id="dashboardContent" class="text-center">
+        <div class="spinner-border text-primary"></div>
+        <p class="mt-2">Loading your information...</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const email = localStorage.getItem("studentEmail");
+if (!email) {
+  location.href = "student-portal.html";
+}
+
+fetch("/root/api/api.php?email=" + encodeURIComponent(email))
+.then(r => r.json())
+.then(d => {
+
+  const box = document.getElementById("dashboardContent");
+
+  if (d.status === "not_found") {
+    box.innerHTML = `
+      <div class="alert alert-danger">
+        Account not found. Please register again.
+      </div>`;
+    return;
+  }
+
+  /* ---- UNVERIFIED / PENDING ---- */
+  if (d.status !== "Approved") {
+    box.innerHTML = `
+      <h5 class="text-warning">⏳ Application Pending</h5>
+      <p class="mt-3">
+        Hi <b>${d.name}</b>,<br>
+        Please verify your email address to activate your account.
+      </p>
+      <p class="text-muted">
+        Check your inbox (or spam folder).
+      </p>
+    `;
+    return;
+  }
+
+  /* ---- APPROVED ---- */
+  const wa = d.whatsapp.replace(/\D/g,'');
+
+  box.innerHTML = `
+    <h5 class="text-success">✅ Application Approved</h5>
+
+    <p class="mt-3">
+      Welcome <b>${d.name}</b> 👋<br>
+      Your admission process has started.
+    </p>
+
+    <a href="https://wa.me/${wa}" 
+       target="_blank"
+       class="btn btn-success btn-lg mt-3 rounded-pill">
+       💬 Connect on WhatsApp
+    </a>
+
+    <p class="mt-4 text-muted">
+      Registered on: ${new Date(d.registered).toLocaleString()}
+    </p>
+  `;
+})
+.catch(() => {
+  document.getElementById("dashboardContent").innerHTML =
+    `<div class="alert alert-danger">Failed to load dashboard.</div>`;
+});
+</script>
+
+</body>
+</html>

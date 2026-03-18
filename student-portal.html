@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Portal | STUDENT ADMISSION LONDON</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+<div class="container py-5 text-center">
+<h3>Student Portal Registration</h3>
+
+<form id="regForm" class="mt-4">
+<input name="name" class="form-control mb-2" placeholder="Name" required>
+<input name="email" type="email" class="form-control mb-2" placeholder="Email" required>
+<input name="whatsapp" class="form-control mb-2" placeholder="WhatsApp" required>
+<button class="btn btn-primary w-100">Register</button>
+</form>
+
+<div id="msg"></div>
+
+<div class="mt-4">
+<div id="g_id_onload"
+ data-client_id="160791480238-e61l8viqge00hfdeee1gp1mfhmpe0h84.apps.googleusercontent.com"
+ data-callback="handleGoogleLogin">
+</div>
+<div class="g_id_signin"></div>
+</div>
+
+<script>
+const API="/root/api/api.php";
+
+document.getElementById("regForm").onsubmit=e=>{
+ e.preventDefault();
+ fetch(API,{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({
+   name:e.target.name.value,
+   email:e.target.email.value,
+   whatsapp:e.target.whatsapp.value
+  })
+ }).then(r=>r.json()).then(d=>{
+   if(d.status==="success"){
+     localStorage.setItem("studentEmail",e.target.email.value);
+     location.href="student-dashboard.html";
+   }else alert("Email exists");
+ });
+}
+
+function handleGoogleLogin(res){
+ const p=JSON.parse(atob(res.credential.split('.')[1]));
+ fetch(API+"?google=1",{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({name:p.name,email:p.email,google_id:p.sub})
+ }).then(r=>r.json()).then(d=>{
+  localStorage.setItem("studentEmail",d.email);
+  location.href="student-dashboard.html";
+ });
+}
+</script>
+</body>
+</html>
