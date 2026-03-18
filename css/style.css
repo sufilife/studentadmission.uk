@@ -1,0 +1,240 @@
+/********** SA WEBSITE 2.0 – FINAL TEMPLATE CSS **********/
+
+/* =====================
+   GLOBAL VARIABLES
+===================== */
+:root {
+    --sa-white: #ffffff;
+    --sa-black: #000000;
+    --sa-yellow: #FFC107;
+    --sa-navy: #0a1a3a;
+    --sa-blue: #0d6efd;
+}
+
+/* =====================
+   Back to Top
+===================== */
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+    color: var(--sa-blue);
+    border-color: var(--sa-blue);
+}
+
+/* =====================
+   Spinner
+===================== */
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+    background-color: rgba(10, 26, 58, 0.95);
+}
+
+#spinner.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+#spinner .spinner-grow {
+    color: var(--sa-white);
+}
+
+/* =====================
+   Buttons
+===================== */
+.btn {
+    font-weight: 600;
+    transition: .5s;
+    border-radius: 50px;
+}
+
+.btn-primary {
+    background-color: var(--sa-yellow);
+    border-color: var(--sa-yellow);
+    color: var(--sa-black);
+}
+
+.btn-outline-primary {
+    color: var(--sa-white);
+    border-color: var(--sa-white);
+}
+
+/* =====================
+   Navbar
+===================== */
+.navbar {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 9;
+}
+
+.navbar .navbar-nav .nav-link {
+    margin-right: 25px;
+    padding: 40px 0;
+    color: var(--sa-white);
+    text-transform: uppercase;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--sa-yellow);
+}
+
+.navbar-brand h2 {
+    color: var(--sa-white);
+}
+
+/* =====================
+   Header / Carousel
+===================== */
+.carousel-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-top: 100px;
+    background: rgba(10, 26, 58, 0); /* transparent bluish */
+}
+
+.carousel-caption h1,
+.carousel-caption h5,
+.carousel-caption p {
+    color: var(--sa-black);
+}
+
+.carousel-caption .btn-outline-primary {
+    color: var(--sa-white);
+    border-color: var(--sa-white);
+}
+
+/* =====================
+   Title Section Lines
+===================== */
+.title h5::before,
+.title h5::after,
+.title h1 {
+    border-color: var(--sa-black);
+}
+
+/* =====================
+   About Section
+===================== */
+.bg-secondary {
+    background-color: var(--sa-navy) !important;
+}
+
+.bg-secondary,
+.bg-secondary h1,
+.bg-secondary h5,
+.bg-secondary p,
+.bg-secondary li {
+    color: var(--sa-white);
+}
+
+.bg-secondary .fa-check-circle {
+    color: var(--sa-white);
+}
+
+.bg-secondary .btn-outline-primary {
+    color: var(--sa-white);
+    border-color: var(--sa-white);
+}
+
+/* =====================
+   Service Section
+===================== */
+.service-item {
+    color: var(--sa-white);
+}
+
+.service-item h3,
+.service-item p {
+    color: var(--sa-white);
+}
+
+.service-item .btn-outline-primary {
+    color: var(--sa-white);
+    border-color: var(--sa-white);
+}
+
+.service-item.service-item-left {
+    background: linear-gradient(to right, var(--sa-navy), #020b1f);
+}
+
+.service-item.service-item-right {
+    background: linear-gradient(to left, var(--sa-navy), #020b1f);
+}
+
+/* =====================
+   Blog / Team
+===================== */
+.team-item h5,
+.team-item span {
+    color: var(--sa-white);
+}
+
+.team-item .team-name {
+    background: rgba(0, 0, 0, .7);
+}
+
+/* =====================
+   Banner
+===================== */
+.container-fluid.bg-secondary h1,
+.container-fluid.bg-secondary h5,
+.container-fluid.bg-secondary p {
+    color: var(--sa-white);
+}
+
+/* =====================
+   Review Section
+===================== */
+#reviewForm label,
+#reviewForm input,
+#reviewForm textarea {
+    color: var(--sa-blue);
+}
+
+/* =====================
+   Testimonial
+===================== */
+.testimonial-item p,
+.testimonial-item h4,
+.testimonial-item h5 {
+    color: var(--sa-white);
+}
+
+.testimonial-item .text-primary {
+    color: var(--sa-yellow);
+}
+
+/* =====================
+   Footer
+===================== */
+.footer {
+    background-image: url(../img/footer-bg.png);
+    animation: footerAnimatedBg 50s linear infinite;
+}
+
+.footer h1,
+.footer p {
+    color: var(--sa-black);
+}
+
+.footer a.border-bottom {
+    color: var(--sa-blue);
+}
+
+/* =====================
+   Footer Animation
+===================== */
+@keyframes footerAnimatedBg {
+    0% { background-position: 0 0; }
+    100% { background-position: -1000px 0; }
+}

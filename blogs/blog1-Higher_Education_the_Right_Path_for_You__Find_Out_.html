@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Higher Education the Right Path for You? | STUDENT ADMISSION LONDON</title>
+  <meta name="description" content="Higher Education the Right Path for You? Find Out — Student Admission London blog post. Keywords: higher education, university admission, career path."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="https://studentadmission.uk/img/logo.webp">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    :root{--primary:#444444;--accent:#444444;--muted:#444444;--bg:#D9E4F5;--card:#FFFFFF;--maxWidth:1500px;--radius:12px;font-family:Inter,"Segoe UI",Roboto,"Noto Sans Bengali",Arial,sans-serif;}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--primary);line-height:1.45}
+    .container{max-width:var(--maxWidth);margin:0 auto;padding:24px}
+    header{background:linear-gradient(180deg,#FFFFFF,var(--bg));padding:16px 0;box-shadow:0 2px 10px rgba(68,68,68,0.1);position:sticky;top:0;z-index:100;border-radius:var(--radius)}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo img{height:44px;loading:lazy}
+    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+    nav ul li a{text-decoration:none;color:var(--primary);font-weight:600;transition:color 0.3s,transform 0.2s}
+    nav ul li a:hover{color:var(--accent);transform:scale(1.05)}
+    .hamburger{display:none;cursor:pointer}
+    .bar{width:25px;height:3px;background:var(--primary);margin:5px 0;transition:0.4s}
+    .hero{background:linear-gradient(90deg,rgba(217,228,245,0.06),rgba(217,228,245,0.02));border-radius:16px;padding:28px;display:grid;grid-template-columns:1fr;gap:24px;align-items:center;animation:fadeIn 1s ease-in}
+    @media (prefers-reduced-motion:reduce){.hero{animation:none}}
+    .hero h1{margin:0;font-size:28px;color:var(--primary)}
+    .hero p{margin:12px 0 18px;color:var(--muted)}
+    .cta-btn{background:var(--accent);color:var(--card);padding:12px 18px;border-radius:10px;border:0;font-weight:600;cursor:pointer;transition:transform 0.2s,background 0.3s;min-width:48px;min-height:48px}
+    .cta-btn:hover{transform:scale(1.05)}
+    .sub-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .badge{background:var(--card);padding:8px 12px;border-radius:8px;box-shadow:0 3px 12px rgba(68,68,68,0.06);font-size:13px}
+    .hero-right{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(68,68,68,0.06)}
+    .hero-right small{color:var(--muted)}
+    .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(68,68,68,0.04);animation:slideUp 0.8s ease-in}
+    @media (prefers-reduced-motion:reduce){.card{animation:none}}
+    .logos{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .logos img{height:36px;filter:grayscale(0.2);loading:lazy}
+    .steps{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0}
+    .step{flex:1;min-width:160px;background:var(--card);padding:12px;border-radius:10px;text-align:center}
+    form .row{display:flex;gap:10px}
+    form .field{margin-bottom:12px}
+    input[type="text"],input[type="email"],input[type="tel"],select{width:100%;padding:12px;border-radius:8px;border:1px solid #e6e9ee;background:var(--card);font-size:15px;transition:border-color 0.3s}
+    input:focus,select:focus{border-color:var(--accent);outline:none}
+    label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    .form-cta{display:flex;gap:8px;align-items:center}
+    .secondary{background:transparent;border:1px solid #e6e9ee;padding:10px 12px;border-radius:10px;cursor:pointer;transition:transform 0.2s;min-width:48px;min-height:48px}
+    .secondary:hover{transform:scale(1.05)}
+    footer{margin-top:36px;padding:18px 0;color:#000001;font-size:14px;background:var(--primary);background-image:url('https://studentadmission.uk/img/footer-bg.png');background-size:cover;background-position:0 0;animation:scrollBg 30s linear infinite}
+    @media (prefers-reduced-motion:reduce){footer{animation:none}}
+    .footer-content{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+    .social{display:flex;align-items:center;gap:8px}
+    .social a{color:#000001;font-size:24px;text-decoration:none;transition:color 0.3s}
+    .social a:hover{color:var(--accent)}
+    .testimonial{background:linear-gradient(180deg,rgba(217,228,245,0.03),rgba(217,228,245,0.01));padding:12px;border-radius:10px;animation:fadeIn 1.2s ease-in}
+    #backToTop{position:fixed;bottom:20px;right:20px;background:var(--accent);color:var(--card);padding:10px 15px;border-radius:50%;cursor:pointer;display:none;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:opacity 0.3s}
+    #backToTop:hover{opacity:0.8}
+    .sticky-whatsapp{position:fixed;right:18px;bottom:80px;background:#444444;color:var(--card);padding:12px;border-radius:50px;box-shadow:0 8px 30px rgba(0,0,0,0.15);display:flex;align-items:center;z-index:999;animation:pulse 1.5s infinite}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+    @keyframes scrollBg{0%{background-position:0 0}100%{background-position:-200% 0}}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.05)}100%{transform:scale(1)}}
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.benefits{grid-template-columns:1fr}.hero-right{order:-1}}
+    @media (max-width:768px){.container{padding:16px}.logo img{height:36px}}
+    @media (max-width:480px){.cta-btn{padding:8px 12px}.form-cta{flex-direction:column}}
+    #formMsg{display:none}
+    .spinner{display:none;width:20px;height:20px;border:2px solid var(--card);border-top:2px solid var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+    .blog-content{padding:20px}
+    .blog-content h2{color:var(--primary)}
+    .blog-content p{color:var(--muted);margin-bottom:16px}
+    .blog-content a{color:var(--accent);text-decoration:underline;transition:color 0.3s}
+    .blog-content a:hover{color:var(--primary)}
+    .blog-content img{max-width:100%;height:auto;border-radius:var(--radius);loading:lazy}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content" style="display:flex;justify-content:space-between;align-items:center">
+        <div class="logo">
+          <img src="https://studentadmission.uk/img/logo.webp" alt="STUDENT ADMISSION LONDON Logo" loading="lazy">
+          <div>
+            <div style="font-weight:700">STUDENT ADMISSION LONDON</div>
+            <div style="font-size:12px;color:var(--muted)">British Council Certified Consultant</div>
+          </div>
+        </div>
+        <nav aria-label="Main navigation">
+          <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+          <ul id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#pages">Pages</a></li>
+            <li><a href="#blogs">Blogs</a></li>
+            <li><a href="#testimonial">Testimonial</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="contact-info" style="display:flex;gap:12px;align-items:center">
+          <div style="font-size:14px;color:var(--muted)">WhatsApp: +447446969466</div>
+          <a href="tel:+447446969466" class="secondary" aria-label="Call us">Call</a>
+        </div>
+      </div>
+    </header>
+    <section class="hero" id="hero" aria-labelledby="blog-hero-title">
+      <div>
+        <h1 id="blog-hero-title">Higher Education the Right Path for You? Find Out!</h1>
+      </div>
+    </section>
+    <div class="blog-content card" aria-labelledby="blog-content-title">
+      <h2 id="blog-content-title" style="display:none">Blog Content</h2>
+      <div class="mb-4">
+        <p>This week, Johns Hopkins will resume requiring test scores from undergraduate applicants, MIT released its first demographic data since the Supreme Court’s decision to end affirmative action, Vanderbilt confirmed plans to build a Florida campus, and colleges face growing demands to discipline student protestors.</p>
+        <p>Johns Hopkins University will resume <a href="https://hub.jhu.edu/2024/08/16/undergrad-admissions-standardized-test-requirement/" target="_blank" rel="noopener noreferrer">requiring ACT or SAT scores</a> from undergraduate applicants after adopting a temporary test-optional policy in 2020 due to Covid-19. The requirement will take effect next year and will apply to students seeking admission to the Krieger School of Arts and Sciences and the Whiting School of Engineering. Students applying to enter Hopkins in fall 2025 are “encouraged” to include test scores in their applications.</p>
+        <p>MIT released its first demographic data for the incoming Class of 2028, following the Supreme Court’s decision to end affirmative action in college admissions. <a href="https://www.boston.com/news/local-news/2024/08/21/mit-reports-less-diverse-incoming-class-due-to-the-end-of-affirmative-action/" target="_blank" rel="noopener noreferrer">The data</a> reveals drops in the enrollment of Black, Hispanic, Native American, and Pacific Islander students.</p>
+        <figure class="mb-4 float-start me-4">
+          <img src="https://studentadmission.uk/img/Blog-1.png" alt="Campus Image illustrating university life" class="img-fluid rounded" style="max-width:438px" loading="lazy">
+        </figure>
+        <h2>The display is most important</h2>
+        <p>Vanderbilt University confirmed its <a href="https://www.bizjournals.com/southflorida/news/2024/08/20/palm-beach-county-vanderbilt-campus-negotiations.html?csrc=6398" target="_blank" rel="noopener noreferrer">plans</a> to build a second campus in downtown West Palm Beach. The proposed $300 million campus will enroll roughly 1,000 students and will feature a college for computer science and artificial intelligence, as well as an “innovation hub” focused on entrepreneurship.</p>
+        <p>Colleges <a href="https://www.chronicle.com/article/colleges-face-growing-demands-to-step-up-enforcement-on-student-protesters-who-cross-a-line" target="_blank" rel="noopener noreferrer">face growing demands</a> to heighten disciplinary action against student protestors who were arrested or charged with student conduct violations amidst protests. Many students face campus disciplinary hearings that could extend well into the fall, leaving their academic status uncertain.</p>
+      </div>
+    </div>
+    <footer aria-label="Footer">
+      <div class="footer-content">
+        <div>
+          <div style="font-weight:700">STUDENT ADMISSION LONDON</div>
+          <div>Office: 167 Green St, London E7 8JE, UK</div>
+          <div>WhatsApp: +447446969466</div>
+          <div>Email: admin@studentadmission.uk</div>
+        </div>
+        <div class="social">
+          <span>Follow Us on Social Media</span>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <div style="text-align:center;width:100%;margin-top:12px">
+          <div>© <a href="https://studentadmission.uk/" target="_blank" style="border-bottom:1px solid #000001;text-decoration:none">STUDENT ADMISSION LONDON</a>, All Rights Reserved.</div>
+          <div>Designed By <a href="https://www.facebook.com/mssoury" target="_blank" style="border-bottom:1px solid #000001;text-decoration:none">Mustafa Sufian Soury</a></div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <a class="sticky-whatsapp" href="https://wa.me/447446969466" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp" style="font-size:24px"></i>
+  </a>
+  <button id="backToTop" onclick="scrollToTop()" aria-label="Back to Top">↑</button>
+  <script>
+    function toggleMenu(){document.getElementById('navMenu').classList.toggle('active');}
+    window.onscroll=function(){document.getElementById('backToTop').style.display=(document.body.scrollTop>20||document.documentElement.scrollTop>20)?'block':'none';};
+    function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
+  </script>
+</body>
+</html>
